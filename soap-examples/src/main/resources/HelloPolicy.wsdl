@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+		xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+		xmlns:wsp="http://www.w3.org/ns/ws-policy" 
+		xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+		xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" 
+		xmlns:tns="http://codecenter.fi/examples/ws" 
+		targetNamespace="http://codecenter.fi/examples/ws">
+	<!-- Specify a policy with an identifier 'myPolicy' -->
+	<wsp:Policy wsu:Id="myPolicy">
+		<wsp:ExactlyOne>
+			<wsp:All>
+				<wsam:Addressing>
+					<wsp:Policy />
+				</wsam:Addressing>
+			</wsp:All>
+		</wsp:ExactlyOne>
+	</wsp:Policy>
+	
+    <wsdl:types>
+        <xsd:schema xmlns="http://codecenter.fi/examples/ws" 
+        		xmlns:tns="http://codecenter.fi/examples/ws" 
+        		targetNamespace="http://codecenter.fi/examples/ws">
+   			<xsd:element name="sayHelloRequest" type="xsd:string" />
+        	<xsd:element name="sayHelloResponse" type="xsd:string" />
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="sayHelloRequest">
+        <wsdl:part name="name" element="tns:sayHelloRequest" />
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part name="result" element="tns:sayHelloResponse" />
+    </wsdl:message>
+    <wsdl:portType name="HelloPolicy">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:sayHelloRequest" />
+            <wsdl:output message="tns:sayHelloResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HelloPolicySoapBinding" type="tns:HelloPolicy">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+        <wsdl:operation name="sayHello">
+            <wsdl:documentation>Returns a customized greeting.</wsdl:documentation>
+            <soap:operation soapAction="" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HelloPolicy">
+        <wsdl:port name="HelloPolicySoap" binding="tns:HelloPolicySoapBinding">
+	    	<!-- Specify a policy at the service level -->
+	    	<wsp:PolicyReference URI="#myPolicy" />
+            <soap:address location="http://localhost:8080/hello/ws/HelloPolicy" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

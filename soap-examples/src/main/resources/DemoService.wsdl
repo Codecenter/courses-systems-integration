@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://codecenter.fi/examples/ws"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	name="DemoService" targetNamespace="http://codecenter.fi/examples/ws">
+	<wsdl:types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+			xmlns:tns="http://codecenter.fi/examples/ws" attributeFormDefault="unqualified"
+			elementFormDefault="unqualified" targetNamespace="http://codecenter.fi/examples/ws">
+			<xs:element name="oneWayOperation" type="tns:oneWayOperation" />
+			<xs:element name="performOperation" type="tns:performOperation" />
+			<xs:element name="performOperationResponse" type="tns:performOperationResponse" />
+			<xs:element name="singleReturnValueOperation" type="tns:singleReturnValueOperation" />
+			<xs:element name="singleReturnValueOperationResponse"
+				type="tns:singleReturnValueOperationResponse" />
+			<xs:complexType name="oneWayOperation">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="myString" type="xs:string" />
+					<xs:element minOccurs="0" name="myInteger" type="xs:int" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="performOperation">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="demoRequest" type="tns:demoRequest" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="demoRequest">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="myInteger" type="xs:int" />
+					<xs:element minOccurs="0" name="myString" type="xs:string" />
+					<xs:element name="returnFault" type="xs:boolean" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="performOperationResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="demoResponse" type="tns:demoResponse" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="demoResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="myInteger" type="xs:int" />
+					<xs:element minOccurs="0" name="myString" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="singleReturnValueOperation">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="myString" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="singleReturnValueOperationResponse">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="return" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="DemoFault" type="xs:string" />
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="performOperation">
+		<wsdl:part element="tns:performOperation" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="singleReturnValueOperation">
+		<wsdl:part element="tns:singleReturnValueOperation" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="singleReturnValueOperationResponse">
+		<wsdl:part element="tns:singleReturnValueOperationResponse"
+			name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="DemoFault">
+		<wsdl:part element="tns:DemoFault" name="error">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="performOperationResponse">
+		<wsdl:part element="tns:performOperationResponse" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="oneWayOperation">
+		<wsdl:part element="tns:oneWayOperation" name="parameters">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="DemoService">
+		<wsdl:operation name="oneWayOperation">
+			<wsdl:input message="tns:oneWayOperation" name="oneWayOperation">
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="performOperation">
+			<wsdl:input message="tns:performOperation" name="performOperation">
+			</wsdl:input>
+			<wsdl:output message="tns:performOperationResponse" name="performOperationResponse">
+			</wsdl:output>
+			<wsdl:fault message="tns:DemoFault" name="DemoFault">
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="singleReturnValueOperation">
+			<wsdl:input message="tns:singleReturnValueOperation" name="singleReturnValueOperation">
+			</wsdl:input>
+			<wsdl:output message="tns:singleReturnValueOperationResponse"
+				name="singleReturnValueOperationResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="DemoServiceSoapBinding" type="tns:DemoService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="oneWayOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="oneWayOperation">
+				<soap:body use="literal" />
+			</wsdl:input>
+		</wsdl:operation>
+		<wsdl:operation name="performOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="performOperation">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="performOperationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="DemoFault">
+				<soap:fault name="DemoFault" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="singleReturnValueOperation">
+			<soap:operation soapAction="" style="document" />
+			<wsdl:input name="singleReturnValueOperation">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="singleReturnValueOperationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="DemoService">
+		<wsdl:port binding="tns:DemoServiceSoapBinding" name="DemoServicePort">
+			<soap:address location="http://localhost:8080/soap/ws/DemoService" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
