@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="SOAP Examples" resourceRoot="" soapui-version="4.5.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HelloServiceSoapBinding" type="wsdl" bindingName="{http://codecenter.fi/examples/ws}HelloServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soap/ws/HelloService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://localhost:8080/soap/ws/HelloService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/HelloService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:sayHelloRequest>Thomas</ws:sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/HelloService/sayHelloRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="HelloServiceSoap12Binding" type="wsdl" bindingName="{http://codecenter.fi/examples/ws}HelloServiceSoap12Binding" soapVersion="1_2" anonymous="optional" definition="http://localhost:8080/soap/ws/HelloService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soap/ws/HelloService?wsdl"><con:part><con:url>http://localhost:8080/soap/ws/HelloService?wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://codecenter.fi/examples/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://codecenter.fi/examples/ws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="http://codecenter.fi/examples/ws" xmlns="http://codecenter.fi/examples/ws">
+      <xsd:element name="sayHelloRequest" type="xsd:string"/>
+      <xsd:element name="sayHelloResponse" type="xsd:string"/>
+    </xsd:schema>
+  </types>
+  <message name="sayHelloRequest">
+    <part element="tns:sayHelloRequest" name="name"></part>
+  </message>
+  <message name="sayHelloResponse">
+    <part element="tns:sayHelloResponse" name="result"></part>
+  </message>
+  <portType name="HelloService">
+    <operation name="sayHello">
+      <input message="tns:sayHelloRequest"></input>
+      <output message="tns:sayHelloResponse"></output>
+    </operation>
+  </portType>
+  <binding name="HelloServiceSoapBinding" type="tns:HelloService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sayHello">
+      <wsdl:documentation>Returns a customized greeting.</wsdl:documentation>
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <binding name="HelloServiceSoap12Binding" type="tns:HelloService">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sayHello">
+      <wsdl:documentation>Returns a customized greeting.</wsdl:documentation>
+      <soap12:operation soapAction=""/>
+      <input>
+        <soap12:body use="literal"/>
+      </input>
+      <output>
+        <soap12:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="HelloService">
+    <port binding="tns:HelloServiceSoapBinding" name="HelloServiceSoap">
+      <soap:address location="http://localhost:8080/soap/ws/HelloService"/>
+    </port>
+    <port binding="tns:HelloServiceSoap12Binding" name="HelloServiceSoap12">
+      <soap12:address location="/HelloService12"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>/HelloService12</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>/HelloService12</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soap:Header/>
+   <soap:Body>
+      <ws:sayHelloRequest>?</ws:sayHelloRequest>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/HelloService/sayHelloRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="DemoServiceSoapBinding" type="wsdl" bindingName="{http://codecenter.fi/examples/ws}DemoServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soap/ws/DemoService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soap/ws/DemoService?wsdl"><con:part><con:url>http://localhost:8080/soap/ws/DemoService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="DemoService" targetNamespace="http://codecenter.fi/examples/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://codecenter.fi/examples/ws" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://codecenter.fi/examples/ws" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="oneWayOperation" type="tns:oneWayOperation"/>
+      <xs:element name="performOperation" type="tns:performOperation"/>
+      <xs:element name="performOperationResponse" type="tns:performOperationResponse"/>
+      <xs:element name="singleReturnValueOperation" type="tns:singleReturnValueOperation"/>
+      <xs:element name="singleReturnValueOperationResponse" type="tns:singleReturnValueOperationResponse"/>
+      <xs:complexType name="oneWayOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="myString" type="xs:string"/>
+          <xs:element minOccurs="0" name="myInteger" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="performOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="demoRequest" type="tns:demoRequest"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="demoRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="myInteger" type="xs:int"/>
+          <xs:element minOccurs="0" name="myString" type="xs:string"/>
+          <xs:element name="returnFault" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="performOperationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="demoResponse" type="tns:demoResponse"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="demoResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="myInteger" type="xs:int"/>
+          <xs:element minOccurs="0" name="myString" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="singleReturnValueOperation">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="myString" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="singleReturnValueOperationResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DemoFault" type="xs:string"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="oneWayOperation">
+    <wsdl:part element="tns:oneWayOperation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="performOperationResponse">
+    <wsdl:part element="tns:performOperationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DemoFault">
+    <wsdl:part element="tns:DemoFault" name="error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="singleReturnValueOperation">
+    <wsdl:part element="tns:singleReturnValueOperation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="performOperation">
+    <wsdl:part element="tns:performOperation" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="singleReturnValueOperationResponse">
+    <wsdl:part element="tns:singleReturnValueOperationResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DemoService">
+    <wsdl:operation name="oneWayOperation">
+      <wsdl:input message="tns:oneWayOperation" name="oneWayOperation"></wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="performOperation">
+      <wsdl:input message="tns:performOperation" name="performOperation"></wsdl:input>
+      <wsdl:output message="tns:performOperationResponse" name="performOperationResponse"></wsdl:output>
+      <wsdl:fault message="tns:DemoFault" name="DemoFault"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="singleReturnValueOperation">
+      <wsdl:input message="tns:singleReturnValueOperation" name="singleReturnValueOperation"></wsdl:input>
+      <wsdl:output message="tns:singleReturnValueOperationResponse" name="singleReturnValueOperationResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DemoServiceSoapBinding" type="tns:DemoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="oneWayOperation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="oneWayOperation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="performOperation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="performOperation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="performOperationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="DemoFault">
+        <soap:fault name="DemoFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="singleReturnValueOperation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="singleReturnValueOperation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="singleReturnValueOperationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DemoService">
+    <wsdl:port binding="tns:DemoServiceSoapBinding" name="DemoServicePort">
+      <soap:address location="http://localhost:8080/soap/ws/DemoService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="oneWayOperation" bindingOperationName="oneWayOperation" type="One-Way" inputName="oneWayOperation" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:oneWayOperation>
+         <myString>Text</myString>
+         <myInteger>123</myInteger>
+      </ws:oneWayOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/DemoService/oneWayOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Invalid Request - No response"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:oneWayOperation>
+         <myInteger>Not an Integer</myInteger>
+      </ws:oneWayOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/DemoService/oneWayOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="performOperation" bindingOperationName="performOperation" type="Request-Response" outputName="performOperationResponse" inputName="performOperation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:performOperation>
+         <demoRequest>
+            <myInteger>123</myInteger>
+            <myString>Some text</myString>
+            <returnFault>false</returnFault>
+         </demoRequest>
+      </ws:performOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/DemoService/performOperation"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Return Fault"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:performOperation>
+         <demoRequest>
+            <myInteger>123</myInteger>
+            <myString>Some text</myString>
+            <returnFault>true</returnFault>
+         </demoRequest>
+      </ws:performOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/DemoService/performOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="singleReturnValueOperation" bindingOperationName="singleReturnValueOperation" type="Request-Response" outputName="singleReturnValueOperationResponse" inputName="singleReturnValueOperation" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/DemoService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:singleReturnValueOperation>
+         <myString>My Input</myString>
+      </ws:singleReturnValueOperation>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/DemoService/singleReturnValueOperation"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="200508" name="HelloPolicySoapBinding" type="wsdl" bindingName="{http://codecenter.fi/examples/ws}HelloPolicySoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soap/ws/HelloPolicy?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/soap/ws/HelloPolicy?wsdl"><con:part><con:url>http://localhost:8080/soap/ws/HelloPolicy?wsdl</con:url><con:content><![CDATA[<definitions targetNamespace="http://codecenter.fi/examples/ws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://codecenter.fi/examples/ws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="http://codecenter.fi/examples/ws" xmlns="http://codecenter.fi/examples/ws">
+      <xsd:element name="sayHelloRequest" type="xsd:string"/>
+      <xsd:element name="sayHelloResponse" type="xsd:string"/>
+    </xsd:schema>
+  </types>
+  <message name="sayHelloRequest">
+    <part element="tns:sayHelloRequest" name="name"></part>
+  </message>
+  <message name="sayHelloResponse">
+    <part element="tns:sayHelloResponse" name="result"></part>
+  </message>
+  <portType name="HelloPolicy">
+    <operation name="sayHello">
+      <input message="tns:sayHelloRequest"></input>
+      <output message="tns:sayHelloResponse"></output>
+    </operation>
+  </portType>
+  <binding name="HelloPolicySoapBinding" type="tns:HelloPolicy">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="sayHello">
+      <wsdl:documentation>Returns a customized greeting.</wsdl:documentation>
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="HelloPolicy">
+    <port binding="tns:HelloPolicySoapBinding" name="HelloPolicySoap">
+      <wsp:PolicyReference URI="#myPolicy"/>
+      <soap:address location="http://localhost:8080/soap/ws/HelloPolicy"/>
+    </port>
+    <port binding="tns:HelloPolicySoapBinding" name="HelloNoPolicySoap">
+      <soap:address location="http://localhost:8080/soap/ws/HelloNoPolicy"/>
+    </port>
+  </service>
+  <wsp:Policy wsu:Id="myPolicy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsam:Addressing>
+          <wsp:Policy/>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soap/ws/HelloPolicy</con:endpoint><con:endpoint>http://localhost:8080/soap/ws/HelloNoPolicy</con:endpoint><con:endpoint>http://hiawatha:8088/mockHelloPolicySoapBinding</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="sayHello" bindingOperationName="sayHello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="No WS-A" useWsAddressing="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/HelloPolicy</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ws:sayHelloRequest>?</ws:sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/HelloPolicy/sayHelloRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="WS-A" useWsAddressing="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@skip_soap_action">true</con:setting><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@force_mtom">false</con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/HelloPolicy</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:Action>http://codecenter.fi/examples/ws/HelloPolicy/sayHelloRequest</wsa:Action>
+      <wsa:MessageID>uuid:a0039f33-e4bd-46fe-ae3b-e12be9cf89c8</wsa:MessageID>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ws:sayHelloRequest>Thomas</ws:sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/HelloPolicy/sayHelloRequest" addDefaultAction="true" addDefaultTo="true" generateMessageId="true"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Reply-To" useWsAddressing="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@skip_soap_action">true</con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap/ws/HelloPolicy</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ws="http://codecenter.fi/examples/ws">
+   <soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing">
+      <wsa:Action>http://codecenter.fi/examples/ws/HelloPolicy/sayHelloRequest</wsa:Action>
+      <wsa:MessageID>uuid:a0039f33-e4bd-46fe-ae3b-e12be9cf89c7</wsa:MessageID>
+      <wsa:ReplyTo>
+        <wsa:Address>http://localhost:8099/someOtherParty</wsa:Address>
+      </wsa:ReplyTo>
+   </soapenv:Header>
+   <soapenv:Body>
+      <ws:sayHelloRequest>Thomas</ws:sayHelloRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://codecenter.fi/examples/ws/HelloPolicy/sayHelloRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>
